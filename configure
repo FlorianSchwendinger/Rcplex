@@ -1545,7 +1545,7 @@ done
 
 
    CPLEXLIBDIR="${CPLEX_DIR}/lib/${SYSTEM}/${LIBFORMAT}"
-   CPLEX_LIBS="-L${CPLEXLIBDIR} `${AWK} 'BEGIN {FS = " = "} /^CLNFLAGS/ {print $2}' ${CPLEX_MAKEFILE}`"
+   CPLEX_LIBS="-L${CPLEXLIBDIR} `${AWK} 'BEGIN {FS = " = "} /^CLNFLAGS/ {print $2}' ${CPLEX_MAKEFILE} | sed -e 's,\$(CPLEXLIB),cplex,'`"
    if test -z CPLEX_LIBS ; then
       { { echo "$as_me:$LINENO: error: Could not get library info from CPLEX example Makefile" >&5
 echo "$as_me: error: Could not get library info from CPLEX example Makefile" >&2;}
